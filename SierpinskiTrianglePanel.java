@@ -1,5 +1,6 @@
-package tiangles;
+package recursion;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Polygon;
@@ -8,7 +9,9 @@ import javax.swing.JPanel;
 
 public class SierpinskiTrianglePanel extends JPanel {
 		private int order = 0;
-
+		
+		public static int red = 0;
+		
 		/** Set a new order */
 		public void increaseOrder() {
 			this.order++;
@@ -48,7 +51,15 @@ public class SierpinskiTrianglePanel extends JPanel {
 
 				Polygon p = new Polygon(x, y, n);  // This polygon represents a triangle with the above
 				                                   //   vertices.
-
+				
+				if(red>250){
+					red = 0;
+				}
+				
+				red+=5;
+				Color c = new Color (red, 100, 255);
+				g.setColor(c);
+				
 				g.fillPolygon(p);     // Fills the triangle above.
 				
 			} else {
@@ -66,4 +77,4 @@ public class SierpinskiTrianglePanel extends JPanel {
 		private static Point midpoint(Point p1, Point p2) {
 			return new Point((p1.x + p2.x) / 2, (p1.y + p2.y) / 2);
 		}
-	}
+}
